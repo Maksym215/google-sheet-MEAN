@@ -1,0 +1,67 @@
+{
+  "name": "Sheet",
+  "version": "0.8.2",
+  "description": "Online character sheet for the Pathfinder RPG",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mottokrosh/Sheet.git"
+  },
+  "main": "server/web.js",
+  "dependencies": {
+    "express": "^3.21.2",
+    "google-auth-library": "^3.1.0",
+    "gridfs-stream": "~0.4.1",
+    "logfmt": "~0.21.0",
+    "monk": "^3.1.2",
+    "passport": "~0.2.0",
+    "passport-github": "~0.1.5",
+    "passport-google-oauth": "~0.2.0",
+    "underscore": "~1.6.0"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-autoprefixer": "~0.4.0",
+    "grunt-concurrent": "~0.4.1",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-coffee": "~0.7.0",
+    "grunt-contrib-compass": "~0.6.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-connect": "~0.5.0",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-cssmin": "~0.7.0",
+    "grunt-contrib-htmlmin": "~0.1.3",
+    "grunt-contrib-imagemin": "^2.0.1",
+    "grunt-contrib-jshint": "~0.7.1",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-watch": "~0.5.2",
+    "grunt-google-cdn": "~0.2.0",
+    "grunt-gss-pull": "~0.1.2",
+    "grunt-karma": "~0.6.2",
+    "grunt-newer": "~0.5.4",
+    "grunt-ngmin": "~0.0.2",
+    "grunt-rev": "~0.1.0",
+    "grunt-svgmin": "~0.2.0",
+    "grunt-usemin": "~2.0.0",
+    "jshint-stylish": "~0.1.3",
+    "karma": "~0.10.7",
+    "karma-chrome-launcher": "~0.1.1",
+    "karma-coffee-preprocessor": "~0.1.1",
+    "karma-firefox-launcher": "~0.1.2",
+    "karma-html2js-preprocessor": "~0.1.0",
+    "karma-jasmine": "~0.1.3",
+    "karma-ng-html2js-preprocessor": "~0.1.0",
+    "karma-ng-scenario": "~0.1.0",
+    "karma-phantomjs-launcher": "~0.1.1",
+    "karma-requirejs": "~0.2.0",
+    "karma-script-launcher": "~0.1.0",
+    "load-grunt-tasks": "~0.2.0",
+    "requirejs": "~2.1.9",
+    "time-grunt": "~0.2.1"
+  },
+  "engines": {
+    "node": "^6.11.1"
+  },
+  "scripts": {
+    "test": "grunt test"
+  }
+}

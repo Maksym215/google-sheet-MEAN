@@ -1,0 +1,109 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Pathfinder RPG Digital Character Sheet</title>
+	<meta name="description" content="An online character sheet for the Pathfinder Roleplaying Game, with cloud storage.">
+	<meta name="viewport" content="width=1010">
+	<link href="http://fonts.googleapis.com/css?family=Goudy+Bookletter+1911&v1" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Caudex:regular,bold&v1" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="styles/34f6cdb8.main.css"/>
+</head>
+
+<body ng-app="sheetApp" ng-class="controllerName">
+	<!--[if lt IE 9]>
+			<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+		<![endif]-->
+
+	<div id="wrapper">
+		<div class="support-notice">
+			<p>Support this App:</p>
+			<p>
+				<script type="text/javascript" src="https://ko-fi.com/widgets/widget_2.js"></script>
+				<script type="text/javascript">kofiwidget2.init('Buy Me a Coffee', '#473827', 'H2H07VCE'); kofiwidget2.draw();</script>
+			</p>
+			<p>or</p>
+			<p><a href="https://paypal.me/mottokrosh" target="_blank">Send a Donation</a></p>
+			<p>(<a href="https://mottokrosh.com" target="_blank">Mottokrosh's blog & apps</a>)</p>
+		</div>
+		<header>
+			<p class="logo"><a href="#/"><img src="images/fe581ad5.meocs-logo.png" width="480" alt="Mottokrosh's Eldritch Online Character Sheet for the Pathfinder Roleplaying Game"></a>
+			</p>
+
+			<!-- Google Authentication author : apollo -->
+			<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+			<script src="https://apis.google.com/js/api:client.js"></script>
+			<script src="https://apis.google.com/js/platform.js?onload=onLoadCallback" async=""></script>
+			<script>
+				var googleUser = {};
+				var startApp = function () {
+					console.log("apollo log")
+					gapi.load('auth2', function () {
+						// Retrieve the singleton for the GoogleAuth library and set up the client.
+						auth2 = gapi.auth2.init({
+							client_id: '650377311869-g50j2n7eqgis4sag9os8itfj8rlpfbqu.apps.googleusercontent.com',
+							cookiepolicy: 'single_host_origin',
+							// Request scopes in addition to 'profile' and 'email'
+							//scope: 'additional_scope'
+						});
+						attachSignin(document.getElementById('customBtn'));
+					});
+				};
+
+				function attachSignin(element) {
+					// console.log(element.id);
+					auth2.attachClickHandler(element, {},
+						function (googleUser) {
+							var id_token = googleUser.getAuthResponse().id_token;
+							console.log("catched id token : ", id_token);
+							var xhr = new XMLHttpRequest();
+							xhr.open('POST', 'http://localhost:5000/auth/verify_token');
+							xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+							xhr.onload = function () {
+								console.log("login success !");
+								document.open();
+								document.write(xhr.responseText);
+								document.close();
+								// console.log('Signed in as: ' + xhr.responseText);
+							};
+							xhr.send('idtoken=' + id_token);
+							// document.getElementById('name').innerText = "Signed in: " +
+							// 	googleUser.getBasicProfile().getName();
+						}, function (error) {
+							alert(JSON.stringify(error, undefined, 2));
+						});
+				}
+			</script>
+		</header>
+		<div class="container" ng-view=""></div>
+		<script>startApp();</script>
+	</div>
+
+	<!-- Google Analytics -->
+	<script>
+		(function (i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date(); a = s.createElement(o),
+				m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+		ga('create', 'UA-1424938-22', 'charactersheet.co.uk');
+		ga('send', 'pageview');
+	</script>
+
+	<script src="bower_components/angular/angular.js"></script>
+
+	<script src="scripts/aecaa445.modules.js"></script>
+
+	<script src="scripts/b321a8d6.scripts.js"></script>
+</body>
+
+</html>
